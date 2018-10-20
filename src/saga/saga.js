@@ -14,9 +14,12 @@ import {getToken} from "../selectors/selectors";
 function* fetchDisk(action) {
     try {
         const token = action.payload;//yield select(getToken);
+        localStorage.setItem('token',token);
         yield put({type: SAVE_TOKEN, payload: token});
         const info = yield call(Api.getDiskInfofoAPI, token);
         yield put({type: FETCH_INFO_DISK_SUCCES, payload: info});
+        const res = yield call(Api.getResourcesAPI, token, '/');
+       yield put({type: FETCH_RESOURCES_SUCCES, payload: res});
     } catch (e) {
         yield put({type: FETCH_INFO_DISK_FAILED, message: e.message});
     }

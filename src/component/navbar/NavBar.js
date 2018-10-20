@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {Link, withRouter, location} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {getToken, getinfo, getPath} from "./../../selectors/selectors";
 import {appID} from "./../../config";
 import {FETCH_INFO_DISK_REQUEST} from './../../ActionType';
 import Path from './../../component/path/Path'
+
 
 class NavBar extends Component {
     componentDidMount() {
@@ -36,7 +37,7 @@ class NavBar extends Component {
                     }
 
                 </nav>
-                <div>
+                <div className='row'>
                     {this.props.children}
                 </div>
             </div>

@@ -10,7 +10,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers/reducer';
 import mySaga from './saga/saga';
-import NavBar from './component/navbar/NavBar';
+
 import App from './container/App';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, composeWithDevTools(
@@ -22,9 +22,7 @@ sagaMiddleware.run(mySaga);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-        <NavBar>
       <App/>
-        </NavBar>
     </Router>
   </Provider>,
   document.getElementById('root'));

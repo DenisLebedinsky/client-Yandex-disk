@@ -1,9 +1,11 @@
 import {SAVE_TOKEN} from './../ActionType';
 
-export default (state = '', {type, payload}) => {
+const initialState = '';// || localStorage.getItem('token');
+
+export default (state = initialState, {type, payload}) => {
     switch (type) {
         case SAVE_TOKEN: {
-            return payload.token;
+            return payload;
         }
         default:
             return state;
