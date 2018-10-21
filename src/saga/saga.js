@@ -12,20 +12,23 @@ import {
 import {getToken} from "../selectors/selectors";
 
 function* fetchDisk(action) {
+    // сохраним токен и получим общую информацию о диске
     try {
-        const token = action.payload;//yield select(getToken);
-        localStorage.setItem('token',token);
-        yield put({type: SAVE_TOKEN, payload: token});
+        const token = action.payload;
+        if (token !== '') {
+            yield put({type: SAVE_TOKEN, payload: token});
+            localStorage.setItem('token', token);
+        }
         const info = yield call(Api.getDiskInfofoAPI, token);
         yield put({type: FETCH_INFO_DISK_SUCCES, payload: info});
-        const res = yield call(Api.getResourcesAPI, token, '/');
-       yield put({type: FETCH_RESOURCES_SUCCES, payload: res});
     } catch (e) {
         yield put({type: FETCH_INFO_DISK_FAILED, message: e.message});
     }
 }
 
 function* fetchResources(action) {
+    //получим данные по текушему каталогу
+    //и его содержимое
     try {
         const token = yield select(getToken);
         const res = yield call(Api.getResourcesAPI, token, action.payload);
