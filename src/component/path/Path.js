@@ -6,10 +6,15 @@ import {getToken, getPath} from "./../../selectors/selectors";
 class Path extends Component {
 //меняем путь роута при нажатии на ссылку в хлебныхкрошках
     handleClickPath() {
-        if (this.props.pathEl !== this.props.currentPath[this.props.currentPath.length - 1]) {
-            let poz = this.props.currentPath.indexOf(this.props.pathEl);
-            let nexPath = '/' + this.props.currentPath.slice(1, poz + 1).join('/');
-            this.props.history.push(nexPath);
+        if (this.props.pathEl !== this.props.history.location.pathname.substr(1).split('/')[this.props.history.location.pathname.substr(1).split('/').length - 1]) {
+     //   if (this.props.pathEl !== this.props.currentPath[this.props.currentPath.length - 1]) {
+            let poz = this.props.history.location.pathname.substr(1).split('/').indexOf(this.props.pathEl);
+            if(poz = 0 || this.props.pathEl==='Disk:' ){
+                this.props.history.push('/');
+            }else {
+                let nexPath = '/' + this.props.history.location.pathname.substr(1).split('/').slice(1, poz + 1).join('/');
+                this.props.history.push(nexPath);
+            }
         }
     }
 
@@ -17,7 +22,8 @@ class Path extends Component {
         return (
             <li className="breadcrumb-item " aria-current="page">
                 <button className='btn btn-link pl-0 pr-0'
-                        onClick={() => this.handleClickPath()}>{this.props.pathEl}</button>
+                        onClick={() => this.handleClickPath()}>
+                    {this.props.pathEl}</button>
             </li>
         );
     }

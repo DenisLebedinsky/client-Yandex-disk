@@ -6,7 +6,7 @@ import {FETCH_INFO_DISK_REQUEST} from "../../ActionType";
 
 
 class Layout extends Component {
-    /*после монирования производим экшен который запустит запрос к api
+      /*после монирования производим экшен который запустит запрос к api
     и получим данные общего состояния диска и содержание корневого каталога
     */
     componentDidMount() {
@@ -19,25 +19,10 @@ class Layout extends Component {
         }
     }
 
-//при изменении пути обновляем данные
-    componentDidUpdate(prevProps) {
-        if (!this.props.data.path && !prevProps.data.path) {
-            const {dispatch} = this.props;
-            if (this.props.token) {
-                //Если информация о пользователе не загружена, запросим её
-                dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
-            }
-            //обновим данные файлов и папок
-            dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
-        }
-
-    }
-
 // при нажатии ... (на каталог выше) меняем адресс роута
     handleckickBack() {
-        let newpathback = this.props.currentPath;
+        let newpathback = this.props.history.location.pathname.substr(1).split('/');
         newpathback.pop();
-        newpathback.shift();
         let newStrPath = '/' + newpathback.join('/');
         this.props.history.push(newStrPath);
     }
