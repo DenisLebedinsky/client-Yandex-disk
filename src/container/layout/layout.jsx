@@ -12,25 +12,25 @@ class Layout extends Component {
     componentDidMount() {
         if (this.props.token) {
             const {dispatch} = this.props;
-            dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
+            if (this.props.info && this.props.info.hasOwnProperty('display_name')) {
+                dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
+            }
             dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
         }
     }
 
 //при изменении пути обновляем данные
     componentDidUpdate(prevProps) {
-        if (this.location) {
-            if (this.props.token && prevProps.location.pathname !== '/'
-                && prevProps.location.pathname !== this.location.pathname) {
-                const {dispatch} = this.props;
-                if (this.props.token) {
-                    //Если информация о пользователе не загружена, запросим её
-                    dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
-                }
-                //обновим данные файлов и папок
-                dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
+        if (!this.props.data.path && !prevProps.data.path) {
+            const {dispatch} = this.props;
+            if (this.props.token) {
+                //Если информация о пользователе не загружена, запросим её
+                dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
             }
+            //обновим данные файлов и папок
+            dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
         }
+
     }
 
 // при нажатии ... (на каталог выше) меняем адресс роута
@@ -38,7 +38,7 @@ class Layout extends Component {
         let newpathback = this.props.currentPath;
         newpathback.pop();
         newpathback.shift();
-        let newStrPath ='/'+ newpathback.join('/');
+        let newStrPath = '/' + newpathback.join('/');
         this.props.history.push(newStrPath);
     }
 
@@ -86,5 +86,5 @@ const mapStateToProps = state => {
     })
 };
 
-export default connect(mapStateToProps, null)(Layout);
+export default connect(mapStateToProps)(Layout);
 

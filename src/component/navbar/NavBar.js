@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {getToken, getinfo, getPath} from "./../../selectors/selectors";
 import {appID} from "./../../config";
-import {FETCH_INFO_DISK_REQUEST} from './../../ActionType';
+import {FETCH_INFO_DISK_REQUEST,CLEAR_TOKEN} from './../../ActionType';
 import Path from './../../component/path/Path'
 
 
@@ -21,6 +21,13 @@ class NavBar extends Component {
         }
     }
 
+    signout(){
+        const {dispatch} = this.props;
+        //очищаем токен в сторе и локалсторедж
+        localStorage.setItem('token','');
+        dispatch({type: CLEAR_TOKEN});
+        this.props.history.push('/');
+    }
 
     render() {
         return (
@@ -29,11 +36,18 @@ class NavBar extends Component {
                     <ol className="breadcrumb">
                         {this.props.path && this.props.path.map((pth, i) => <Path key={i} pathEl={pth}/>)}
                     </ol>
-                    {this.props.info.display_name ? <p>{this.props.info.display_name}</p> :
+                    {this.props.info.display_name ?
                         <div>
-                            <a className='btn btn-outline-success'
-                               href={`https://oauth.yandex.ru/authorize?response_type=token&client_id=${appID}`}
-                               target='_self'>Войти</a>
+                            <p>{this.props.info.display_name}</p>
+                            <button className='btn btn-secondary'
+                                    onClick={()=>this.signout()}
+                            >Выйти</button>
+                        </div>
+                        :
+                        <div>
+                        <a className='btn btn-outline-success'
+                        href={`https://oauth.yandex.ru/authorize?response_type=token&client_id=${appID}`}
+                        target='_self'>Войти</a>
                         </div>}
                 </nav>
                 <div className='row'>
