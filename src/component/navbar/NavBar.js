@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {getToken, getinfo, getPath} from "./../../selectors/selectors";
 import {appID} from "./../../config";
-import {FETCH_INFO_DISK_REQUEST,CLEAR_TOKEN} from './../../ActionType';
+import {FETCH_INFO_DISK_REQUEST, CLEAR_TOKEN, CLEAR_INFO,CLEAR_DATA} from './../../ActionType';
 import Path from './../../component/path/Path'
 
 
@@ -26,6 +26,8 @@ class NavBar extends Component {
         //очищаем токен в сторе и локалсторедж
         localStorage.setItem('token','');
         dispatch({type: CLEAR_TOKEN});
+        dispatch({type:CLEAR_INFO});
+        dispatch({type:CLEAR_DATA});
         this.props.history.push('/');
     }
 
