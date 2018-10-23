@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import {FETCH_RESOURCES_REQUEST} from './../../ActionType'
 import {getToken, getData, getPath} from './../../selectors/selectors'
 import {FETCH_INFO_DISK_REQUEST} from "../../ActionType";
-
+import icFolder from './ic_folder.svg';
 
 class Layout extends Component {
-      /*после монирования производим экшен который запустит запрос к api
-    и получим данные общего состояния диска и содержание корневого каталога
-    */
+    /*после монирования производим экшен который запустит запрос к api
+  и получим данные общего состояния диска и содержание корневого каталога
+  */
     componentDidMount() {
         if (this.props.token) {
             const {dispatch} = this.props;
@@ -36,29 +36,55 @@ class Layout extends Component {
             newpath.push(name);
             let newStrPath = '/' + newpath.join('/');
             this.props.history.push(newStrPath);
+        } else {
+
         }
     }
 
+    handledownload(e) {
+        e.stopPropagation();
+    }
+
+    handledelfolder(e) {
+        e.stopPropagation();
+    }
+
+
     render() {
-        return (
-            <div className="container">
-                <header className="App-header bd-highlight">
-                    {this.props.data.items ?
-                        <ul className="list-group list-group-flush ">
-                            {this.props.currentPath.length > 1 ?
-                                <li className="list-group-item app_li"
-                                    onClick={() => this.handleckickBack()}
-                                >...</li> : null}
-                            {this.props.data.items.map(item =>
-                                <li className="list-group-item app_li"
-                                    onClick={() => this.handleclickfolder(item.type, item.name)}
-                                    key={item.resource_id}
-                                >{item.name}</li>)}
-                        </ul>
-                        : null}
-                </header>
-            </div>
-        )
+        return <div className="container">
+            <header className="App-header bd-highlight">
+                {this.props.data.items ?
+                    <ul className="list-group list-resourse">
+                        {this.props.currentPath.length > 1 ?
+                            <li className="list-group-item  d-flex justify-content-between"
+                                onClick={() => this.handleckickBack()}
+                            >...</li> : null}
+                        {this.props.data.items.map(item =>
+                            <li className="list-group-item  d-flex justify-content-between"
+                                onClick={() => this.handleclickfolder(item.type, item.name)}
+                                key={item.resource_id}
+                            >
+                                <div>
+                                    {item.type === 'dir' && (<img src={icFolder} alt="folder"
+                                                                  className="folder_icon pr-3"/>)}
+                                    {item.name}
+                                </div>
+                                {item.type === 'dir' ?
+                                    (<button onClick={(e) => this.handledelfolder(e)}
+                                             className="btn btn-outline-danger">
+                                        <i className="fas fa-times"/>
+                                    </button>) :
+                                    (<button onClick={(e) => this.handledownload(e)}
+                                             className="btn btn-outline-success">
+                                        <i className="fas fa-arrow-down"/>
+                                    </button>)
+                                }
+                            </li>)
+                        }
+                    </ul>
+                    : null}
+            </header>
+        </div>
     }
 }
 

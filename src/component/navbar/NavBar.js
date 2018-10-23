@@ -44,9 +44,9 @@ class NavBar extends Component {
                         {this.props.history.location.pathname.substr(1).split('/').map((pth, i) => <Path key={i} pathEl={pth}/>)}
                     </ol>
                     {this.props.info.display_name ?
-                        <div>
-                            <p>{this.props.info.display_name}</p>
-                            <button className='btn btn-secondary'
+                        <div className='btn-group'>
+                            <span className='btn btn-success disabled'>{this.props.info.display_name}</span>
+                            <button className='btn btn-success'
                                     onClick={()=>this.signout()}
                             >Выйти</button>
                         </div>

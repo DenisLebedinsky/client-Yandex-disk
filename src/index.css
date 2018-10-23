@@ -16,3 +16,22 @@ code {
 .breadcrumb {
     background-color: transparent;
 }
+
+.folder_icon{
+    display: inline-flex;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-grow: 1;
+
+}
+
+.rigth_small_icon{
+    height: 15px;
+  }
+
+.list-resourse li{
+    cursor: pointer;
+}
+.list-resourse li:hover{
+    box-shadow: 0 0 7px rgba(0,0,0, 0.3);
+}
