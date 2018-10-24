@@ -8,7 +8,7 @@ export default (state = initialState, {type, payload}) => {
             return payload;
         }
         case CLEAR_TOKEN:
-            return '';
+            return initialState;
         default:
             return state;
     }

@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getToken, getinfo, getPath} from "./../../selectors/selectors";
-import {appID} from "./../../config";
-import {FETCH_INFO_DISK_REQUEST, CLEAR_TOKEN, CLEAR_INFO,CLEAR_DATA,FETCH_RESOURCES_REQUEST} from './../../ActionType';
+import {getToken, getinfo} from './../../selectors/selectors';
+import {appID} from './../../config';
+import {
+    fetch_info_disk_request,
+    fetch_Resources_request,
+    clear_info_disk,
+    clear_Resources,
+    clear_token
+} from './../../actions'
 import Path from './../../component/path/Path'
 
 
@@ -11,52 +17,81 @@ class NavBar extends Component {
     //если у адреса есть хеш тогда сохраняем токен
     //это будет только в том случае если мы получим урл от яндекса при успешной авторизации
     componentDidMount() {
-        if (this.props.location.hash ) {
+        if (this.props.location.hash) {
             const token = /access_token=([^&]+)/.exec(this.props.location.hash)[1];
-            const {dispatch} = this.props;
             //выполним запрос на сервер и получим данные по пользователю,
-            dispatch({type: FETCH_INFO_DISK_REQUEST, payload: token});
+            this.props.fetch_info_disk_request(token);
             this.props.history.push('/');
-            dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
-        }else if(this.props.token && !this.props.info.hasOwnProperty('display_name')){
-            const {dispatch} = this.props;
+            this.props.fetch_Resources_request(this.props.location.pathname);
+        } else if (this.props.token && !this.props.info.hasOwnProperty('display_name')) {
             //выполним запрос на сервер и получим данные по пользователю,
-            dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
+            this.props.fetch_info_disk_request(this.props.token);
         }
     }
 
-    signout(){
-        const {dispatch} = this.props;
-        //очищаем токен в сторе и локалсторедж
-        localStorage.setItem('token','');
-        dispatch({type: CLEAR_TOKEN});
-        dispatch({type:CLEAR_INFO});
-        dispatch({type:CLEAR_DATA});
+    signout() {
+        //очищаем токен
+        localStorage.setItem('token', '');
+        this.props.clear_token();
+        this.props.clear_info_disk();
+        this.props.clear_Resources();
         this.props.history.push('/');
     }
+
+    handleCreactFolder() {
+
+    }
+
+    handleLoadFile(e) {
+        e.preventDefault();
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.readAsDataURL(file);
+        console.log(file);
+    }
+
 
     render() {
         return (
             <div className='container'>
-                <nav className="navbar navbar-light bg-light NavBar__main">
-                    <ol className="breadcrumb">
-                        {this.props.info.display_name ? <Path key={'01'} pathEl={"Файлы"}/>:null}
-                        {this.props.history.location.pathname.substr(1).split('/').map((pth, i) => <Path key={i} pathEl={pth}/>)}
+                <nav className='navbar navbar-light bg-light NavBar__main'>
+                    <ol className='breadcrumb'>
+                        {this.props.info.display_name ? <Path key={'01'} pathEl={'Файлы'}/> : null}
+                        {this.props.history.location.pathname.substr(1).split('/').map((pth, i) =>
+                            <Path key={i} pathEl={pth}/>
+                        )}
                     </ol>
                     {this.props.info.display_name ?
                         <div className='btn-group'>
                             <span className='btn btn-success disabled'>{this.props.info.display_name}</span>
                             <button className='btn btn-success'
-                                    onClick={()=>this.signout()}
-                            >Выйти</button>
+                                    onClick={() => this.signout()}
+                            >Выйти
+                            </button>
                         </div>
                         :
                         <div>
-                        <a className='btn btn-outline-success'
-                        href={`https://oauth.yandex.ru/authorize?response_type=token&client_id=${appID}`}
-                        target='_self'>Войти</a>
+                            <a className='btn btn-outline-success'
+                               href={`https://oauth.yandex.ru/authorize?response_type=token&client_id=${appID}`}
+                               target='_self'>Войти</a>
                         </div>}
                 </nav>
+
+                {this.props.info.display_name &&
+                <div className='row justify-content-center mt-3 mb-3'>
+                    <div className='btn-group'>
+                        <button className='btn btn-outline-warning'
+                                onClick={() => this.handleCreactFolder()}
+                        >Создать папку
+                        </button>
+                        <label className='btn btn-outline-primary mb-0'>
+                            <input type='file' className='NavBar__input_LoadFile'
+                                   onChange={(e) => this.handleLoadFile(e)}/>
+                            Загрузить файл
+                        </label>
+                    </div>
+                </div>}
+
                 <div className='row'>
                     {this.props.children}
                 </div>
@@ -72,4 +107,12 @@ const mapStateToProps = state => {
     })
 };
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+const mapDispatchToProps = {
+    fetch_info_disk_request,
+    fetch_Resources_request,
+    clear_info_disk,
+    clear_token,
+    clear_Resources
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

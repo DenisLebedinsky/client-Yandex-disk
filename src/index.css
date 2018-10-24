@@ -35,3 +35,12 @@ code {
 .list-resourse li:hover{
     box-shadow: 0 0 7px rgba(0,0,0, 0.3);
 }
+
+.NavBar__input_LoadFile {
+    /* Растягиваем label на всю возможную площадь блока .file-upload */
+    display: none;
+}
+
+.file_icon{
+    height: 30px;
+}

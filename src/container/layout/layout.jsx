@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {FETCH_RESOURCES_REQUEST} from './../../ActionType'
 import {getToken, getData, getPath} from './../../selectors/selectors'
-import {FETCH_INFO_DISK_REQUEST} from "../../ActionType";
 import icFolder from './ic_folder.svg';
+import icFile from './file.svg';
+import {fetch_info_disk_request, fetch_Resources_request} from '../../actions';
 
 class Layout extends Component {
     /*после монирования производим экшен который запустит запрос к api
@@ -11,11 +11,10 @@ class Layout extends Component {
   */
     componentDidMount() {
         if (this.props.token) {
-            const {dispatch} = this.props;
             if (this.props.info && this.props.info.hasOwnProperty('display_name')) {
-                dispatch({type: FETCH_INFO_DISK_REQUEST, payload: this.props.token});
+                this.props.fetch_info_disk_request(this.props.token);
             }
-            dispatch({type: FETCH_RESOURCES_REQUEST, payload: this.props.location.pathname});
+            this.props.fetch_Resources_request(this.props.location.pathname);
         }
     }
 
@@ -36,48 +35,54 @@ class Layout extends Component {
             newpath.push(name);
             let newStrPath = '/' + newpath.join('/');
             this.props.history.push(newStrPath);
-        } else {
-
         }
     }
 
-    handledownload(e) {
-        e.stopPropagation();
-    }
 
-    handledelfolder(e) {
+    static handledelfolder(e) {
         e.stopPropagation();
     }
 
 
     render() {
-        return <div className="container">
-            <header className="App-header bd-highlight">
+        return <div className='container'>
+            <header className='App-header bd-highlight'>
                 {this.props.data.items ?
-                    <ul className="list-group list-resourse">
+                    <ul className='list-group list-resourse'>
                         {this.props.currentPath.length > 1 ?
-                            <li className="list-group-item  d-flex justify-content-between"
+                            <li className='list-group-item  d-flex justify-content-between'
                                 onClick={() => this.handleckickBack()}
                             >...</li> : null}
                         {this.props.data.items.map(item =>
-                            <li className="list-group-item  d-flex justify-content-between"
+                            <li className='list-group-item  d-flex justify-content-between'
                                 onClick={() => this.handleclickfolder(item.type, item.name)}
                                 key={item.resource_id}
                             >
-                                <div>
-                                    {item.type === 'dir' && (<img src={icFolder} alt="folder"
-                                                                  className="folder_icon pr-3"/>)}
-                                    {item.name}
-                                </div>
                                 {item.type === 'dir' ?
-                                    (<button onClick={(e) => this.handledelfolder(e)}
-                                             className="btn btn-outline-danger">
-                                        <i className="fas fa-times"/>
+                                    <div>
+                                        <img src={icFolder} alt='folder'
+                                             className='folder_icon pr-3'/>
+                                        {item.name}
+                                    </div>
+                                    :
+                                    <div>
+                                        <img src={icFile} alt='folder'
+                                             className='file_icon pr-3'/>
+                                        {item.name}
+                                    </div>}
+
+                                {item.type === 'dir' ?
+                                    (<button onClick={(e) => Layout.handledelfolder(e)}
+                                             className='btn btn-outline-danger'>
+                                        <i className='fas fa-times'/>
                                     </button>) :
-                                    (<button onClick={(e) => this.handledownload(e)}
-                                             className="btn btn-outline-success">
-                                        <i className="fas fa-arrow-down"/>
-                                    </button>)
+                                    (<a href={item.file}>
+                                        <button
+                                            className='btn btn-outline-success'>
+                                            <i className='fas fa-arrow-down'/>
+
+                                        </button>
+                                    </a>)
                                 }
                             </li>)
                         }
@@ -97,5 +102,9 @@ const mapStateToProps = state => {
     })
 };
 
-export default connect(mapStateToProps)(Layout);
+const mapDispatchToProps={
+    fetch_info_disk_request,
+    fetch_Resources_request
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Layout);
 
