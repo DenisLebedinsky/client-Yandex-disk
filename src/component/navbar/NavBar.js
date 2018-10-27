@@ -1,19 +1,22 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {getToken, getinfo} from './../../selectors/selectors';
 import {appID} from './../../config';
+import Modal from './../modal/modal'
 import {
     fetch_info_disk_request,
     fetch_Resources_request,
     clear_info_disk,
     clear_Resources,
-    clear_token
+    clear_token,
+    open_modal,
+    upload_file_request
 } from './../../actions'
 import Path from './../../component/path/Path'
 
 
-class NavBar extends Component {
+class NavBar extends PureComponent {
     //если у адреса есть хеш тогда сохраняем токен
     //это будет только в том случае если мы получим урл от яндекса при успешной авторизации
     componentDidMount() {
@@ -39,15 +42,17 @@ class NavBar extends Component {
     }
 
     handleCreactFolder() {
-
+        this.props.open_modal();
     }
 
     handleLoadFile(e) {
         e.preventDefault();
         let reader = new FileReader();
         let file = e.target.files[0];
-        reader.readAsDataURL(file);
-        console.log(file);
+        reader.onloadend = () => {
+            this.props.upload_file_request(this.props.history.location.pathname+file.name, reader.result,file.size)
+        };
+     reader.readAsDataURL(file);
     }
 
 
@@ -87,11 +92,11 @@ class NavBar extends Component {
                         <label className='btn btn-outline-primary mb-0'>
                             <input type='file' className='NavBar__input_LoadFile'
                                    onChange={(e) => this.handleLoadFile(e)}/>
-                            Загрузить файл
+                            Отправить файл
                         </label>
                     </div>
                 </div>}
-
+                <Modal location={this.props.location.pathname}/>
                 <div className='row'>
                     {this.props.children}
                 </div>
@@ -112,7 +117,9 @@ const mapDispatchToProps = {
     fetch_Resources_request,
     clear_info_disk,
     clear_token,
-    clear_Resources
+    clear_Resources,
+    open_modal,
+    upload_file_request
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

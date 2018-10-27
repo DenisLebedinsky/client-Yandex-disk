@@ -1,14 +1,18 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {getToken, getData, getPath} from './../../selectors/selectors'
 import icFolder from './ic_folder.svg';
 import icFile from './file.svg';
-import {fetch_info_disk_request, fetch_Resources_request} from '../../actions';
+import {
+    fetch_info_disk_request,
+    fetch_Resources_request,
+    delete_folder_request
+} from '../../actions';
 
-class Layout extends Component {
+class Layout extends PureComponent {
     /*после монирования производим экшен который запустит запрос к api
-  и получим данные общего состояния диска и содержание корневого каталога
-  */
+    и получим данные общего состояния диска и содержание корневого каталога
+    */
     componentDidMount() {
         if (this.props.token) {
             if (this.props.info && this.props.info.hasOwnProperty('display_name')) {
@@ -18,17 +22,17 @@ class Layout extends Component {
         }
     }
 
-// при нажатии ... (на каталог выше) меняем адресс роута
-    handleckickBack() {
+    // при нажатии ... (на каталог выше) меняем адресс роута
+    handle_ckick_Back() {
         let newpathback = this.props.history.location.pathname.substr(1).split('/');
         newpathback.pop();
         let newStrPath = '/' + newpathback.join('/');
         this.props.history.push(newStrPath);
     }
 
-//при нажатии на папку так же изменяем путь адреса
-// и тем самым проваливаемся в неё
-    handleclickfolder(type, name) {
+    //при нажатии на папку так же изменяем путь адреса
+    // и тем самым проваливаемся в неё
+    handle_click_folder(type, name) {
         if (type === 'dir') {
             let newpath = this.props.currentPath.slice();
             newpath.shift();
@@ -39,9 +43,12 @@ class Layout extends Component {
     }
 
 
-    static handledelfolder(e) {
+    handle_del_folder(e, itempath) {
+        this.props.delete_folder_request(itempath, this.props.location.pathname);
+
         e.stopPropagation();
     }
+
 
 
     render() {
@@ -51,11 +58,11 @@ class Layout extends Component {
                     <ul className='list-group list-resourse'>
                         {this.props.currentPath.length > 1 ?
                             <li className='list-group-item  d-flex justify-content-between'
-                                onClick={() => this.handleckickBack()}
+                                onClick={() => this.handle_ckick_Back()}
                             >...</li> : null}
                         {this.props.data.items.map(item =>
                             <li className='list-group-item  d-flex justify-content-between'
-                                onClick={() => this.handleclickfolder(item.type, item.name)}
+                                onClick={() => this.handle_click_folder(item.type, item.name)}
                                 key={item.resource_id}
                             >
                                 {item.type === 'dir' ?
@@ -71,18 +78,17 @@ class Layout extends Component {
                                         {item.name}
                                     </div>}
 
-                                {item.type === 'dir' ?
-                                    (<button onClick={(e) => Layout.handledelfolder(e)}
-                                             className='btn btn-outline-danger'>
-                                        <i className='fas fa-times'/>
-                                    </button>) :
-                                    (<a href={item.file}>
-                                        <button
-                                            className='btn btn-outline-success'>
+                                {item.type !== 'dir' ? (
+                                        <a href={item.file}>
+                                        <button className='btn btn-outline-success'
+                                                >
                                             <i className='fas fa-arrow-down'/>
-
                                         </button>
-                                    </a>)
+                                        </a>
+                                ) : (<button onClick={(e) => this.handle_del_folder(e, item.path)}
+                                             className='btn btn-outline-danger'>
+                                    <i className='fas fa-times'/>
+                                </button>)
                                 }
                             </li>)
                         }
@@ -91,6 +97,7 @@ class Layout extends Component {
             </header>
         </div>
     }
+
 }
 
 //добавляем данные из стора в пропсы
@@ -102,9 +109,10 @@ const mapStateToProps = state => {
     })
 };
 
-const mapDispatchToProps={
+const mapDispatchToProps = {
     fetch_info_disk_request,
-    fetch_Resources_request
+    fetch_Resources_request,
+    delete_folder_request
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Layout);
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
 
