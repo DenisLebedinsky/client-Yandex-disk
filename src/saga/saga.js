@@ -64,10 +64,17 @@ function* create_folder(action) {
 
 function* upload_file(action) {
     try {
+        const path = (action.payload.pathname === '/') ?
+            action.payload.pathname + action.payload.filename :
+            action.payload.pathname + '/' + action.payload.filename;
         const token = yield select(getToken);
-        const result = yield call(Api.upload_file_get_url_api, token, action.payload.pathname);
+        const result = yield call(Api.upload_file_get_url_api, token, path);
         const status = yield call(Api.upload_file_api, result.data.href, action.payload.file);
-        console.log(status)
+        if (status === 201) {
+            yield put(actions.upload_file_succes());
+            const res = yield call(Api.getResources_api, token, action.payload.pathname);
+            yield put(actions.fetch_Resources_succes(res));
+        }
     } catch (e) {
         yield put(actions.upload_file_failed(e));
     }

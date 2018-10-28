@@ -66,11 +66,11 @@ export const delete_folder_failed = (e) => {
 //-------------------------------------------------------------------
 
 //------------  Загрузка и скачивание файла -------------------------
-export const upload_file_request = (pathname, file,size) => {
-    return ({type: Types.UPLOAD_FILE_REQUST, payload: {pathname: pathname, file: file,size:size}});
+export const upload_file_request = (pathname,filename, file) => {
+    return ({type: Types.UPLOAD_FILE_REQUST, payload: {pathname: pathname,filename, file: file}});
 };
 export const upload_file_succes = () => {
-    return ({type: Types.UPLOAD_FILE_SUCCES});
+    return ({type: Types.UPLOAD_FILE_SUCCES, payload:'Загрузка началась'});
 };
 export const upload_file_failed = (e) => {
     return ({type: Types.UPLOAD_FILE_FAILED, message: e.message});

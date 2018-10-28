@@ -3,7 +3,7 @@ import {routerReducer} from 'react-router-redux'
 import auth from './auth'
 import info from './info'
 import data from './data'
-import folder from './folderLog'
+import event_log from './event_log'
 import modal from './modal'
 
 
@@ -12,6 +12,6 @@ export default combineReducers({
     auth,
     info,
     data,
-    folder,
+    event_log,
     modal
 })

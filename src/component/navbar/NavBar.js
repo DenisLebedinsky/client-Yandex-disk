@@ -50,7 +50,7 @@ class NavBar extends PureComponent {
         let reader = new FileReader();
         let file = e.target.files[0];
         reader.onloadend = () => {
-            this.props.upload_file_request(this.props.history.location.pathname+file.name, reader.result)
+            this.props.upload_file_request(this.props.history.location.pathname,file.name, reader.result)
         };
      reader.readAsDataURL(file);
     }
