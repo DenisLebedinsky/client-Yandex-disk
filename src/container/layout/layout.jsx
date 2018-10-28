@@ -45,7 +45,6 @@ class Layout extends PureComponent {
 
     handle_del_folder(e, itempath) {
         this.props.delete_folder_request(itempath, this.props.location.pathname);
-
         e.stopPropagation();
     }
 

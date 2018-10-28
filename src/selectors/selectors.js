@@ -34,3 +34,4 @@ export const getinfo = createSelector(
     info => info
 );
 
+export const getMSG = (state) => state.event_log;

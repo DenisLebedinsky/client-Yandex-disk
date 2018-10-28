@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
-import {getToken, getPath} from './../../selectors/selectors';
+import {getToken, getPath} from '../../selectors/selectors';
 
 class Path extends PureComponent {
 //меняем путь роута при нажатии на ссылку в хлебныхкрошках

@@ -46,7 +46,6 @@ function* del_folder(action) {
     }
 }
 
-
 function* create_folder(action) {
     //создадим папку
     try {

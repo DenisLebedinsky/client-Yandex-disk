@@ -48,7 +48,7 @@ export const delfolder_api = (token, path) => {
         });
 };
 
-
+//запрос создаст папку по указанному пути
 export const create_folder_api = (token, path) => {
     const Url = 'https://cloud-api.yandex.net/v1/disk/resources?';
     let pathfull = 'path=%2F';
@@ -67,7 +67,8 @@ export const create_folder_api = (token, path) => {
         });
 };
 
-
+//первый запрос для загрузки файла, вернет ссылку по которой нужно отправить файл
+//ссылка действует 30мин.
 export const upload_file_get_url_api = (token, path) => {
     const Url = 'https://cloud-api.yandex.net:443/v1/disk/resources/upload?';
     let pathfull = 'path=' + encodeURIComponent(path);
@@ -86,7 +87,7 @@ export const upload_file_get_url_api = (token, path) => {
 
 };
 
-
+//отправляем файл (blob) на полученную ссылку
 export const upload_file_api = (url, file) => {
     const parts = file.split(',');
     const typep = parts[0];
@@ -107,23 +108,22 @@ function b64toBlob(b64Data, contentType, sliceSize) {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;
 
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
+    let byteCharacters = atob(b64Data);
+    let byteArrays = [];
 
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        let slice = byteCharacters.slice(offset, offset + sliceSize);
 
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
+        let byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
             byteNumbers[i] = slice.charCodeAt(i);
         }
 
-        var byteArray = new Uint8Array(byteNumbers);
+        let byteArray = new Uint8Array(byteNumbers);
 
         byteArrays.push(byteArray);
     }
 
-    var blob = new Blob(byteArrays, {type: contentType});
-    return blob;
+    return new Blob(byteArrays, {type: contentType});
 }
 

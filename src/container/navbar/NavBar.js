@@ -1,9 +1,10 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getToken, getinfo} from './../../selectors/selectors';
-import {appID} from './../../config';
-import Modal from './../modal/modal'
+import {getToken, getinfo} from '../../selectors/selectors';
+import {appID} from '../../config';
+import Modal from '../modal/modal'
+import MSG from '../msg/index'
 import {
     fetch_info_disk_request,
     fetch_Resources_request,
@@ -12,8 +13,8 @@ import {
     clear_token,
     open_modal,
     upload_file_request
-} from './../../actions'
-import Path from './../../component/path/Path'
+} from '../../actions/index'
+import Path from '../path/Path'
 
 
 class NavBar extends PureComponent {
@@ -50,9 +51,9 @@ class NavBar extends PureComponent {
         let reader = new FileReader();
         let file = e.target.files[0];
         reader.onloadend = () => {
-            this.props.upload_file_request(this.props.history.location.pathname,file.name, reader.result)
+            this.props.upload_file_request(this.props.history.location.pathname, file.name, reader.result)
         };
-     reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
     }
 
 
@@ -92,13 +93,17 @@ class NavBar extends PureComponent {
                         <label className='btn btn-outline-primary mb-0'>
                             <input type='file' className='NavBar__input_LoadFile'
                                    onChange={(e) => this.handleLoadFile(e)}/>
-                            Отправить файл
+                            Загрузить файл
                         </label>
                     </div>
                 </div>}
                 <Modal location={this.props.location.pathname}/>
+
                 <div className='row'>
                     {this.props.children}
+                </div>
+                <div className='row'>
+                    <MSG/>
                 </div>
             </div>
         );
