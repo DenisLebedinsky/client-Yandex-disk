@@ -87,21 +87,43 @@ export const upload_file_get_url_api = (token, path) => {
 };
 
 
-export const upload_file_api = ( url, file,size) => {
-    return axios.put(url, {
-           headers: {
-            'Accept': '*/*',
-           'Content-Type': 'application/x-www-form-urlencoded',
-            'Expect': '100-continue',
-            'Content-Length': size,
-               'origin':'http://localhost:3000/'
-        },
-        data: file
-    })
+export const upload_file_api = (url, file) => {
+    const parts = file.split(',');
+    const typep = parts[0];
+    const base64Data = parts[1];
+    const type = typep.split(';')[0].split(':')[1];
+    const blobfile = b64toBlob(base64Data, type);
+
+    delete axios.defaults.headers.common['Authorization'];
+    axios.defaults.headers.common['Content-Type'] = 'application/octet-stream';
+    return axios.put(url, blobfile)
         .then(res => res.status)
         .catch(error => {
             throw error
         });
 };
 
+function b64toBlob(b64Data, contentType, sliceSize) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, {type: contentType});
+    return blob;
+}
 

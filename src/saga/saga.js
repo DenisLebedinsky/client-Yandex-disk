@@ -66,7 +66,7 @@ function* upload_file(action) {
     try {
         const token = yield select(getToken);
         const result = yield call(Api.upload_file_get_url_api, token, action.payload.pathname);
-        const status = yield call(Api.upload_file_api, result.data.href, action.payload.file, action.payload.size);
+        const status = yield call(Api.upload_file_api, result.data.href, action.payload.file);
         console.log(status)
     } catch (e) {
         yield put(actions.upload_file_failed(e));
