@@ -12,7 +12,7 @@ class Modal extends Component {
     }
 
     handle_change(e) {
-        this.setState({enterText: e.target.value.replace(/[^a-zА-яёЁ\s]+/ig, '')})
+        this.setState({enterText: e.target.value.replace(/[^a-zА-яёЁ\d\s]+/ig, '')})
     }
 
     close() {
