@@ -4,7 +4,7 @@ import * as Types from './../ActionType';
 import * as actions from './../actions'
 import {getToken} from '../selectors/selectors';
 
-function* fetchDisk(action) {
+export function* fetchDisk(action) {
     // сохраним токен и получим общую информацию о диске
     try {
         const token = action.payload;
@@ -91,3 +91,4 @@ function* mySaga() {
 }
 
 export default mySaga;
+
