@@ -15,8 +15,8 @@ class MSG extends Component {
     }
 }
 
-const mapStateToprops = (state) => {
+const mapStateToProps = (state) => {
     return ({msg: getMSG(state)})
 };
 
-export default connect(mapStateToprops)(MSG)
+export default connect(mapStateToProps)(MSG)

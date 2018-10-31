@@ -3,76 +3,76 @@ import * as Types from './../ActionType';
 // action creators
 
 //------------  загрузка информации о диске и пользователе  ---------
-export const fetch_info_disk_request = (token) => {
+export const fetchInfoDiskRequest = (token) => {
     return ({type: Types.FETCH_INFO_DISK_REQUEST, payload: token});
 };
 
-export const fetch_info_disk_succes = (info) => {
+export const fetchInfoDiskSucces = (info) => {
     return ({type: Types.FETCH_INFO_DISK_SUCCES, payload: info});
 };
 
-export const fetch_info_disk_failed = (e) => {
+export const fetchInfoDiskFailed = (e) => {
     return ({type: Types.FETCH_INFO_DISK_FAILED, message: e.message});
 };
 
-export const clear_info_disk = () => {
+export const clearInfoDisk = () => {
     return ({type: Types.CLEAR_INFO});
 };
 
 //-------------------------------------------------------------------
 
 //------------ Загрузка файла и папок для отображения  --------------
-export const fetch_Resources_request = (pathname) => {
+export const fetchResourcesRequest = (pathname) => {
     return ({type: Types.FETCH_RESOURCES_REQUEST, payload: pathname});
 };
 
-export const fetch_Resources_succes = (res) => {
+export const fetchResourcesSucces = (res) => {
     return ({type: Types.FETCH_RESOURCES_SUCCES, payload: res});
 };
 
-export const fetch_Resources_failed = (e) => {
+export const fetchResourcesFailed = (e) => {
     return ({type: Types.FETCH_RESOURCES_FAILED, message: e.message});
 };
 
-export const clear_Resources = () => {
+export const clearResources = () => {
     return ({type: Types.CLEAR_RESOURCES});
 };
 //-------------------------------------------------------------------
 
 //------------  создание и удаление папки  --------------------------
-export const create_folder_request = (pathname, currentPath) => {
+export const createFolderRequest = (pathname, currentPath) => {
     return ({type: Types.CREATE_FOLDER_REQUST, payload: {pathFolder: pathname, currentPath: currentPath}});
 };
 
-export const create_folder_succes = (pathname) => {
+export const createFolderSucces = (pathname) => {
     return ({type: Types.CREATE_FOLDER_SUCCES, payload: pathname});
 };
 
-export const create_folder_failed = (e) => {
+export const createFolderFailed = (e) => {
     return ({type: Types.CREATE_FOLDER_FAILED, message: e.message});
 };
 
-export const delete_folder_request = (pathname, currentPath) => {
+export const deleteFolderRequest = (pathname, currentPath) => {
     return ({type: Types.DEL_FOLDER_REQUST, payload: {pathFolder: pathname, currentPath: currentPath}});
 };
 
-export const delete_folder_succes = (pathname) => {
+export const deleteFolderSucces = (pathname) => {
     return ({type: Types.DEL_FOLDER_SUCCES, payload: pathname});
 };
 
-export const delete_folder_failed = (e) => {
+export const deleteFolderFailed = (e) => {
     return ({type: Types.DEL_FOLDER_FAILED, message: e.message});
 };
 //-------------------------------------------------------------------
 
 //------------  Загрузка и скачивание файла -------------------------
-export const upload_file_request = (pathname,filename, file) => {
+export const uploadFileRequest = (pathname,filename, file) => {
     return ({type: Types.UPLOAD_FILE_REQUST, payload: {pathname: pathname,filename, file: file}});
 };
-export const upload_file_succes = () => {
+export const uploadFileSucces = () => {
     return ({type: Types.UPLOAD_FILE_SUCCES, payload:'Загрузка началась'});
 };
-export const upload_file_failed = (e) => {
+export const uploadFileFailed = (e) => {
     return ({type: Types.UPLOAD_FILE_FAILED, message: e.message});
 };
 
@@ -80,19 +80,19 @@ export const upload_file_failed = (e) => {
 //-------------------------------------------------------------------
 
 //------------  Сохранение / удаление токена авторизации ------------
-export const save_token = (token) => {
+export const saveToken = (token) => {
     return ({type: Types.SAVE_TOKEN, payload: token});
 };
-export const clear_token = () => {
+export const clearToken = () => {
     return ({type: Types.CLEAR_TOKEN});
 };
 //-------------------------------------------------------------------
 
 // -------------------- МОДАЛЬНОЕ ОКНО ------------------------------
-export const open_modal = () => {
+export const openModal = () => {
     return ({type: Types.OPEN_MODAL});
 };
-export const close_modal = () => {
+export const closeModal = () => {
     return ({type: Types.CLOSE_MODAL});
 };
 //___________________________________________________________________

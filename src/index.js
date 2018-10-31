@@ -5,13 +5,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import './bootstrap.min.css'
+import './bootstrap.min.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers/reducer';
 import mySaga from './saga/saga';
 
 import App from './container/App';
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, composeWithDevTools(
   applyMiddleware(sagaMiddleware),

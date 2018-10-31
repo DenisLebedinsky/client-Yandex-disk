@@ -4,16 +4,16 @@ import * as t from '../ActionType';
 
 describe('test actions', () => {
 
-  it('fetch_info_disk_request', () => {
+  it('Fetch Info Disk Request', () => {
     const token = 'wdaw12edswqd12ej1kbh12v3g131v42b31';
-    expect(actions.fetch_info_disk_request(token)).toEqual({
+    expect(actions.fetchInfoDiskRequest(token)).toEqual({
       type: t.FETCH_INFO_DISK_REQUEST,
       payload: token,
     });
   });
 
 
-  it('fetch_info_disk_succes', () => {
+  it('Fetch Info Disk Succes', () => {
     const info = {
       user: {
         country: 'ru',
@@ -23,17 +23,17 @@ describe('test actions', () => {
       },
       revision: 1540742404911849,
     };
-    expect(actions.fetch_info_disk_request(info)).toEqual({
+    expect(actions.fetchResourcesSucces(info)).toEqual({
       type: t.FETCH_INFO_DISK_REQUEST,
       payload: info,
     });
   });
 
-  it('fetch_info_disk_failed', () => {
+  it('Fetch Info Disk Failed', () => {
     const e = { type: t.FETCH_INFO_DISK_FAILED, message: 'Error test code 401' };
-    expect(actions.fetch_info_disk_failed(e)).toEqual({
+    expect(actions.fetchInfoDiskFailed(e)).toEqual({
       type: t.FETCH_INFO_DISK_FAILED,
-      message: 'Error test code 401'
+      message: 'Error test code 401',
     });
   });
 
