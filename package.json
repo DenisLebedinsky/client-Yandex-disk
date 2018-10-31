@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.5.2",
+    "react": "^16.6.0",
     "react-contextmenu": "^2.9.4",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.6.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
@@ -27,5 +27,40 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest": {
+      "collectCoverage": true,
+      "coverageDirectory": "<rootDir>/coverage",
+      "verbose": true,
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/node_modules"
+      ],
+      "modulePaths": [
+        "<rootDir>/src"
+      ],
+      "moduleFileExtensions": [
+        "js"
+      ],
+      "moduleDirectories": [
+        "node_modules",
+        "src"
+      ],
+      "modulePathIgnorePatterns": [
+        "<rootDir>/public"
+      ],
+      "moduleNameMapper": {
+        "\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$": "<rootDir>/src/components/__mocks__/fileTransformer.js",
+        "^Components(.*)$": "<rootDir>/src/components",
+        "^Data(.*)$": "<rootDir>/src/data",
+        "^Hocs(.*)$": "<rootDir>/src/hocs",
+        "^Scenes(.*)$": "<rootDir>/src/scenes",
+        "^Services(.*)$": "<rootDir>/src/services",
+        "^Styles(.*)$": "<rootDir>/src/styles",
+        "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js"
+      }
+    }
+  }
 }

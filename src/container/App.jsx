@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, withRouter} from 'react-router-dom';
-import Layout from './layout/layout';
+import Layout from './layout/Layout';
 import NavBar from './navbar/NavBar';
 
 //рендер навигационной панели и рабочего экрана
