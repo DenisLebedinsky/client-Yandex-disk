@@ -24,7 +24,7 @@ describe('test actions', () => {
       revision: 1540742404911849,
     };
     expect(actions.fetchResourcesSucces(info)).toEqual({
-      type: t.FETCH_INFO_DISK_REQUEST,
+      type: t.FETCH_RESOURCES_SUCCES,
       payload: info,
     });
   });

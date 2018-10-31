@@ -19,7 +19,7 @@ export function* fetchDisk(action) {
   }
 }
 
-function* fetchResources(action) {
+export function* fetchResources(action) {
   //получим данные по текушему каталогу
   //и его содержимое
   try {
@@ -31,7 +31,7 @@ function* fetchResources(action) {
   }
 }
 
-function* delFolder(action) {
+ export function* delFolder(action) {
 
   try {
     const token = yield select(getToken);
@@ -46,7 +46,7 @@ function* delFolder(action) {
   }
 }
 
-function* createFolder(action) {
+export function* createFolder(action) {
   //создадим папку
   try {
     const token = yield select(getToken);
@@ -61,7 +61,7 @@ function* createFolder(action) {
   }
 }
 
-function* uploadFile(action) {
+export function* uploadFile(action) {
   try {
     const path = (action.payload.pathname === '/') ?
       action.payload.pathname + action.payload.filename :
