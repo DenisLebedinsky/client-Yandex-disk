@@ -8,7 +8,7 @@ import {
   fetchResourcesRequest,
 } from '../../actions';
 
-class Layout extends Component {
+export class Layout extends Component {
   /* после монирования производим экшен который запустит запрос к api
   и получим данные общего состояния диска и содержание корневого каталога */
   componentDidMount() {

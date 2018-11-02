@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './style.css';
 import { closeModal, createFolderRequest } from '../../actions';
 
-class Modal extends Component {
+export class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = { enterText: '' };
@@ -57,12 +57,14 @@ class Modal extends Component {
             </div>
             <div className='modal-footer'>
               <button type='button'
+                      id='closeModal'
                       className='btn btn-secondary'
                       onClick={() => this.close()}
               >Закрыть
               </button>
               <button type='button'
                       className='btn btn-primary'
+                      id='CreateFolder'
                       onClick={this.createFolder}
               >Создать
               </button>
