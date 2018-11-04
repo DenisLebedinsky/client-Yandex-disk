@@ -15,19 +15,13 @@ Implemented functionality:
 ## Getting Started
 
 
-### Prerequisites
-
-What things you need to install the software and how to install them
+### clone
 
 ```
 https://github.com/DenisLebedinsky/client-Yandex-disk.git
 ```
 
 ### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
 
 ```
 npm install
@@ -40,9 +34,13 @@ npm install
 npm test
 ```
 
+##Build
 
+```
+npm build
+```
 
-## Built With
+## Create With
 
 * [React](https://reactjs.org/) - The web framework used
 * [CRA](https://github.com/facebook/create-react-app) - Used Create React App
