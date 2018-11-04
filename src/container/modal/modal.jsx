@@ -7,8 +7,6 @@ export class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = { enterText: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.createFolder = this.createFolder.bind(this);
   }
 
   handleChange(e) {
@@ -43,7 +41,7 @@ export class Modal extends Component {
               <h5 className='modal-title'>Наименование папки</h5>
               <button type='button'
                       className='close'
-                      onClick={() => this.close()}
+                      onClick={()=>this.close()}
               >
                 <span>&times;</span>
               </button>
@@ -52,20 +50,20 @@ export class Modal extends Component {
               <input type='text'
                      className='form-control'
                      value={this.state.enterText}
-                     onChange={this.handleChange}
+                     onChange={(e)=>this.handleChange(e)}
               />
             </div>
             <div className='modal-footer'>
               <button type='button'
                       id='closeModal'
                       className='btn btn-secondary'
-                      onClick={() => this.close()}
+                      onClick={()=>this.close()}
               >Закрыть
               </button>
               <button type='button'
                       className='btn btn-primary'
                       id='CreateFolder'
-                      onClick={this.createFolder}
+                      onClick={()=>this.createFolder()}
               >Создать
               </button>
             </div>

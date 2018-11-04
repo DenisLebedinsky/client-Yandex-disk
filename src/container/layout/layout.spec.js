@@ -4,6 +4,7 @@ import { Layout } from './Layout';
 
 const mockFetchInfo = jest.fn();
 const mockFetchResources = jest.fn();
+
 describe('Layout container', () => {
 
   const props = { // описываем props
@@ -28,7 +29,7 @@ describe('Layout container', () => {
       currentPath: '',
       location: '/',
     fetchInfoDiskRequest: mockFetchInfo,
-    fetchResourcesRequest:mockFetchResources,
+    fetchResourcesRequest: mockFetchResources,
     type:'dir'
     };
 

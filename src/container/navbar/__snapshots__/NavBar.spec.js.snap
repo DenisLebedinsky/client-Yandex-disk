@@ -1,0 +1,792 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar testing NavBar snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NavBar
+    history={
+      Object {
+        "location": Object {
+          "pathname": "/",
+        },
+      }
+    }
+    info={
+      Object {
+        "display_name": "Test NavBar",
+      }
+    }
+    location={
+      Object {
+        "pathname": "/",
+      }
+    }
+    token=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <nav
+          className="navbar navbar-light bg-light NavBar__main"
+        >
+          <ol
+            className="breadcrumb"
+          >
+            <withRouter(Connect(Path))
+              pathEl="Файлы"
+            />
+            <withRouter(Connect(Path))
+              pathEl=""
+            />
+          </ol>
+          <div
+            className="btn-group"
+          >
+            <span
+              className="btn btn-success disabled"
+            >
+              Test NavBar
+            </span>
+            <button
+              className="btn btn-success"
+              id="signOut"
+              onClick={[Function]}
+            >
+              Выйти
+            </button>
+          </div>
+        </nav>,
+        <div
+          className="row justify-content-center mt-3 mb-3"
+        >
+          <div
+            className="btn-group"
+          >
+            <button
+              className="btn btn-outline-warning"
+              id="createFolderBtn"
+              onClick={[Function]}
+            >
+              Создать папку
+            </button>
+            <label
+              className="btn btn-outline-primary mb-0"
+            >
+              <input
+                className="NavBar__input_LoadFile"
+                onChange={[Function]}
+                type="file"
+              />
+              Загрузить файл
+            </label>
+          </div>
+        </div>,
+        <Connect(Modal)
+          location="/"
+        />,
+        <div
+          className="row"
+        />,
+        <div
+          className="row"
+        >
+          <Connect(MSG) />
+        </div>,
+      ],
+      "className": "container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <ol
+              className="breadcrumb"
+            >
+              <withRouter(Connect(Path))
+                pathEl="Файлы"
+              />
+              <withRouter(Connect(Path))
+                pathEl=""
+              />
+            </ol>,
+            <div
+              className="btn-group"
+            >
+              <span
+                className="btn btn-success disabled"
+              >
+                Test NavBar
+              </span>
+              <button
+                className="btn btn-success"
+                id="signOut"
+                onClick={[Function]}
+              >
+                Выйти
+              </button>
+            </div>,
+          ],
+          "className": "navbar navbar-light bg-light NavBar__main",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <withRouter(Connect(Path))
+                  pathEl="Файлы"
+                />,
+                Array [
+                  <withRouter(Connect(Path))
+                    pathEl=""
+                  />,
+                ],
+              ],
+              "className": "breadcrumb",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "01",
+                "nodeType": "function",
+                "props": Object {
+                  "pathEl": "Файлы",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "0",
+                "nodeType": "function",
+                "props": Object {
+                  "pathEl": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "ol",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="btn btn-success disabled"
+                >
+                  Test NavBar
+                </span>,
+                <button
+                  className="btn btn-success"
+                  id="signOut"
+                  onClick={[Function]}
+                >
+                  Выйти
+                </button>,
+              ],
+              "className": "btn-group",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Test NavBar",
+                  "className": "btn btn-success disabled",
+                },
+                "ref": null,
+                "rendered": "Test NavBar",
+                "type": "span",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Выйти",
+                  "className": "btn btn-success",
+                  "id": "signOut",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": "Выйти",
+                "type": "button",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "nav",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="btn-group"
+          >
+            <button
+              className="btn btn-outline-warning"
+              id="createFolderBtn"
+              onClick={[Function]}
+            >
+              Создать папку
+            </button>
+            <label
+              className="btn btn-outline-primary mb-0"
+            >
+              <input
+                className="NavBar__input_LoadFile"
+                onChange={[Function]}
+                type="file"
+              />
+              Загрузить файл
+            </label>
+          </div>,
+          "className": "row justify-content-center mt-3 mb-3",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="btn btn-outline-warning"
+                id="createFolderBtn"
+                onClick={[Function]}
+              >
+                Создать папку
+              </button>,
+              <label
+                className="btn btn-outline-primary mb-0"
+              >
+                <input
+                  className="NavBar__input_LoadFile"
+                  onChange={[Function]}
+                  type="file"
+                />
+                Загрузить файл
+              </label>,
+            ],
+            "className": "btn-group",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Создать папку",
+                "className": "btn btn-outline-warning",
+                "id": "createFolderBtn",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Создать папку",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <input
+                    className="NavBar__input_LoadFile"
+                    onChange={[Function]}
+                    type="file"
+                  />,
+                  "Загрузить файл",
+                ],
+                "className": "btn btn-outline-primary mb-0",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "NavBar__input_LoadFile",
+                    "onChange": [Function],
+                    "type": "file",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+                "Загрузить файл",
+              ],
+              "type": "label",
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "location": "/",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Connect(MSG) />,
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <nav
+            className="navbar navbar-light bg-light NavBar__main"
+          >
+            <ol
+              className="breadcrumb"
+            >
+              <withRouter(Connect(Path))
+                pathEl="Файлы"
+              />
+              <withRouter(Connect(Path))
+                pathEl=""
+              />
+            </ol>
+            <div
+              className="btn-group"
+            >
+              <span
+                className="btn btn-success disabled"
+              >
+                Test NavBar
+              </span>
+              <button
+                className="btn btn-success"
+                id="signOut"
+                onClick={[Function]}
+              >
+                Выйти
+              </button>
+            </div>
+          </nav>,
+          <div
+            className="row justify-content-center mt-3 mb-3"
+          >
+            <div
+              className="btn-group"
+            >
+              <button
+                className="btn btn-outline-warning"
+                id="createFolderBtn"
+                onClick={[Function]}
+              >
+                Создать папку
+              </button>
+              <label
+                className="btn btn-outline-primary mb-0"
+              >
+                <input
+                  className="NavBar__input_LoadFile"
+                  onChange={[Function]}
+                  type="file"
+                />
+                Загрузить файл
+              </label>
+            </div>
+          </div>,
+          <Connect(Modal)
+            location="/"
+          />,
+          <div
+            className="row"
+          />,
+          <div
+            className="row"
+          >
+            <Connect(MSG) />
+          </div>,
+        ],
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <ol
+                className="breadcrumb"
+              >
+                <withRouter(Connect(Path))
+                  pathEl="Файлы"
+                />
+                <withRouter(Connect(Path))
+                  pathEl=""
+                />
+              </ol>,
+              <div
+                className="btn-group"
+              >
+                <span
+                  className="btn btn-success disabled"
+                >
+                  Test NavBar
+                </span>
+                <button
+                  className="btn btn-success"
+                  id="signOut"
+                  onClick={[Function]}
+                >
+                  Выйти
+                </button>
+              </div>,
+            ],
+            "className": "navbar navbar-light bg-light NavBar__main",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <withRouter(Connect(Path))
+                    pathEl="Файлы"
+                  />,
+                  Array [
+                    <withRouter(Connect(Path))
+                      pathEl=""
+                    />,
+                  ],
+                ],
+                "className": "breadcrumb",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "01",
+                  "nodeType": "function",
+                  "props": Object {
+                    "pathEl": "Файлы",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "0",
+                  "nodeType": "function",
+                  "props": Object {
+                    "pathEl": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "ol",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span
+                    className="btn btn-success disabled"
+                  >
+                    Test NavBar
+                  </span>,
+                  <button
+                    className="btn btn-success"
+                    id="signOut"
+                    onClick={[Function]}
+                  >
+                    Выйти
+                  </button>,
+                ],
+                "className": "btn-group",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Test NavBar",
+                    "className": "btn btn-success disabled",
+                  },
+                  "ref": null,
+                  "rendered": "Test NavBar",
+                  "type": "span",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Выйти",
+                    "className": "btn btn-success",
+                    "id": "signOut",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": "Выйти",
+                  "type": "button",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "nav",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="btn-group"
+            >
+              <button
+                className="btn btn-outline-warning"
+                id="createFolderBtn"
+                onClick={[Function]}
+              >
+                Создать папку
+              </button>
+              <label
+                className="btn btn-outline-primary mb-0"
+              >
+                <input
+                  className="NavBar__input_LoadFile"
+                  onChange={[Function]}
+                  type="file"
+                />
+                Загрузить файл
+              </label>
+            </div>,
+            "className": "row justify-content-center mt-3 mb-3",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  className="btn btn-outline-warning"
+                  id="createFolderBtn"
+                  onClick={[Function]}
+                >
+                  Создать папку
+                </button>,
+                <label
+                  className="btn btn-outline-primary mb-0"
+                >
+                  <input
+                    className="NavBar__input_LoadFile"
+                    onChange={[Function]}
+                    type="file"
+                  />
+                  Загрузить файл
+                </label>,
+              ],
+              "className": "btn-group",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Создать папку",
+                  "className": "btn btn-outline-warning",
+                  "id": "createFolderBtn",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": "Создать папку",
+                "type": "button",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <input
+                      className="NavBar__input_LoadFile"
+                      onChange={[Function]}
+                      type="file"
+                    />,
+                    "Загрузить файл",
+                  ],
+                  "className": "btn btn-outline-primary mb-0",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "NavBar__input_LoadFile",
+                      "onChange": [Function],
+                      "type": "file",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "input",
+                  },
+                  "Загрузить файл",
+                ],
+                "type": "label",
+              },
+            ],
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "location": "/",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Connect(MSG) />,
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

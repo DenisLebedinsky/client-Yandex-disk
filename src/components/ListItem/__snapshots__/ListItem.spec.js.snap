@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List item test snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ListItem
+    item={
+      Object {
+        "file": "",
+        "name": "filename",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="d-flex justify-content-between"
+      >
+        <div
+          className="item__file_name"
+        >
+          <img
+            alt="folder"
+            className="file_icon pr-3"
+            src="file.svg"
+          />
+          filename
+        </div>
+        <a
+          href=""
+        >
+          <button
+            className="btn btn-outline-success"
+          >
+            <i
+              className="fas fa-arrow-down"
+            />
+          </button>
+        </a>
+      </div>,
+      "className": "list-group-item  ",
+      "onClick": [Function],
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="item__file_name"
+          >
+            <img
+              alt="folder"
+              className="file_icon pr-3"
+              src="file.svg"
+            />
+            filename
+          </div>,
+          <a
+            href=""
+          >
+            <button
+              className="btn btn-outline-success"
+            >
+              <i
+                className="fas fa-arrow-down"
+              />
+            </button>
+          </a>,
+        ],
+        "className": "d-flex justify-content-between",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <img
+                alt="folder"
+                className="file_icon pr-3"
+                src="file.svg"
+              />,
+              "filename",
+            ],
+            "className": "item__file_name",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "folder",
+                "className": "file_icon pr-3",
+                "src": "file.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "filename",
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <button
+              className="btn btn-outline-success"
+            >
+              <i
+                className="fas fa-arrow-down"
+              />
+            </button>,
+            "href": "",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <i
+                className="fas fa-arrow-down"
+              />,
+              "className": "btn btn-outline-success",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "fas fa-arrow-down",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "i",
+            },
+            "type": "button",
+          },
+          "type": "a",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "li",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="d-flex justify-content-between"
+        >
+          <div
+            className="item__file_name"
+          >
+            <img
+              alt="folder"
+              className="file_icon pr-3"
+              src="file.svg"
+            />
+            filename
+          </div>
+          <a
+            href=""
+          >
+            <button
+              className="btn btn-outline-success"
+            >
+              <i
+                className="fas fa-arrow-down"
+              />
+            </button>
+          </a>
+        </div>,
+        "className": "list-group-item  ",
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="item__file_name"
+            >
+              <img
+                alt="folder"
+                className="file_icon pr-3"
+                src="file.svg"
+              />
+              filename
+            </div>,
+            <a
+              href=""
+            >
+              <button
+                className="btn btn-outline-success"
+              >
+                <i
+                  className="fas fa-arrow-down"
+                />
+              </button>
+            </a>,
+          ],
+          "className": "d-flex justify-content-between",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt="folder"
+                  className="file_icon pr-3"
+                  src="file.svg"
+                />,
+                "filename",
+              ],
+              "className": "item__file_name",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "folder",
+                  "className": "file_icon pr-3",
+                  "src": "file.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              "filename",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <button
+                className="btn btn-outline-success"
+              >
+                <i
+                  className="fas fa-arrow-down"
+                />
+              </button>,
+              "href": "",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <i
+                  className="fas fa-arrow-down"
+                />,
+                "className": "btn btn-outline-success",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "fas fa-arrow-down",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              "type": "button",
+            },
+            "type": "a",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "li",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

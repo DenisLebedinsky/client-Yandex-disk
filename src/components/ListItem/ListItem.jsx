@@ -6,7 +6,7 @@ import {file} from './file'
 import Folder from './Folder';
 
 
-class ListItem extends PureComponent {
+export class ListItem extends PureComponent {
   //при нажатии на папку так же изменяем путь адреса
   // и тем самым проваливаемся в неё
   handleClickFolder(type, name) {

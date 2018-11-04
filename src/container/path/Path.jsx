@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {getToken, getPath} from '../../selectors/selectors';
 
-class Path extends PureComponent {
+export class Path extends PureComponent {
 //меняем путь роута при нажатии на ссылку в хлебныхкрошках
     handleClickPath() {
         if (this.props.pathEl !== this.props.history.location.pathname.substr(1).split('/')[this.props.history.location.pathname.substr(1).split('/').length - 1]) {
@@ -20,7 +20,7 @@ class Path extends PureComponent {
     render() {
         return (
             <li className='breadcrumb-item ' aria-current='page'>
-                <button className='btn btn-link pl-0 pr-0'
+                <button className='btn btn-link pl-0 pr-0 btnPath'
                         onClick={() => this.handleClickPath()}>
                     {this.props.pathEl}</button>
             </li>

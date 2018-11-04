@@ -2,19 +2,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Modal } from './Modal';
 
-
 const mockCreateFolderRequest = jest.fn();
 const mokecloseModal = jest.fn();
 
-
 describe('Modal testing', () => {
+
 // описываем props
   const props = {
     modal: {
       isOpen: false,
     },
-    createFolder: mockCreateFolderRequest,
-    closeModal: mokecloseModal,
   };
 
   describe('Modal visible none', () => {
@@ -22,10 +19,9 @@ describe('Modal testing', () => {
     const ModalContainer = shallow(<Modal  {...props} />);
 
     it('snapshot', () => {
-      //u   console.log(ModalContainer.debug());
+      //  console.log(ModalContainer.debug());
       expect(ModalContainer).toMatchSnapshot();
     });
-
 
     describe('Modal visible', () => {
 
@@ -33,17 +29,20 @@ describe('Modal testing', () => {
         modal: {
           isOpen: true,
         },
+        closeModal: mokecloseModal,
+        createFolderRequest: mockCreateFolderRequest,
       };
       const ModalContainer = shallow(<Modal  {...nextProps} />);
 
       it('snapshot', () => {
-        console.log(ModalContainer.debug());
+        //console.log(ModalContainer.debug());
         expect(ModalContainer).toMatchSnapshot();
       });
 
       //проверяем вызов функции mockcreateFolderRequest
       it('function create folder', () => {
-        console.log(ModalContainer.find('#CreateFolder').debug());
+        //console.log(ModalContainer.find('#CreateFolder').debug());
+        ModalContainer.setState({ enterText: 'newfolder' });
         ModalContainer.find('#CreateFolder').simulate('click');
         expect(mockCreateFolderRequest).toHaveBeenCalledTimes(1);
       });
@@ -51,7 +50,7 @@ describe('Modal testing', () => {
       //проверяем вызов функции mockcloseModal
       it('function close modal', () => {
         ModalContainer.find('#closeModal').simulate('click');
-        expect(mokecloseModal).toHaveBeenCalledTimes(1);
+        expect(mokecloseModal).toHaveBeenCalled();
       });
     });
   });

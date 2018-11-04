@@ -17,7 +17,7 @@ import {
 import Path from '../path/Path';
 
 
-class NavBar extends PureComponent {
+export class NavBar extends PureComponent {
   //если у адреса есть хеш тогда сохраняем токен
   //это будет только в том случае если мы получим урл от яндекса при успешной авторизации
   componentDidMount() {
@@ -71,6 +71,7 @@ class NavBar extends PureComponent {
             <div className='btn-group'>
               <span className='btn btn-success disabled'>{this.props.info.display_name}</span>
               <button className='btn btn-success'
+                      id='signOut'
                       onClick={() => this.signOut()}
               >Выйти
               </button>
@@ -87,6 +88,7 @@ class NavBar extends PureComponent {
         <div className='row justify-content-center mt-3 mb-3'>
           <div className='btn-group'>
             <button className='btn btn-outline-warning'
+                    id='createFolderBtn'
                     onClick={() => this.handleCreatFolder()}
             >Создать папку
             </button>

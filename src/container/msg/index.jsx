@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getMSG} from '../../selectors/selectors';
 
-class MSG extends Component {
+export class MSG extends Component {
 
     render() {
         const {show} = this.props.msg;
