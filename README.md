@@ -34,7 +34,7 @@ npm install
 npm test
 ```
 
-##Build
+## Build
 
 ```
 npm build
