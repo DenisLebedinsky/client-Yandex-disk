@@ -2,15 +2,15 @@
 
 Implemented functionality:
 
-1)Authorization in Yandex;
-2)Display a list of root files and folders;
-3)Enter the folder;
-4)Display files inside folders;
-5)Redirect to any folder by reference;
-6)Download file from Yandex Disk;
-7)Upload file to Yandex Disk;
-8)Create folder on Yandex Disk;
-9)Delete folder on Yandex Disk;
+1. Authorization in Yandex;
+2. Display a list of root files and folders;
+3. Enter the folder;
+4. Display files inside folders;
+5. Redirect to any folder by reference;
+6. Download file from Yandex Disk;
+7. Upload file to Yandex Disk;
+8. Create folder on Yandex Disk;
+9. Delete folder on Yandex Disk;
 
 ## Getting Started
 
