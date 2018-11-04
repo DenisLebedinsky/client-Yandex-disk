@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getToken, getinfo } from '../../selectors/selectors';
 import { appID } from '../../config';
 import Modal from '../modal/modal';
@@ -111,6 +112,11 @@ export class NavBar extends PureComponent {
     );
   }
 }
+
+NavBar.propTypes = {
+  token: PropTypes.string,
+  info: PropTypes.object,
+};
 
 const mapStateToProps = state => {
   return ({

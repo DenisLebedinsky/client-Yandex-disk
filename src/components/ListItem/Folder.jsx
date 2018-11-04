@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import icFolder from './ic_folder.svg';
 import { deleteFolderRequest } from '../../actions';
-
+import PropTypes from 'prop-types';
 
 class Folder extends PureComponent {
   handleDelFolder = (e, path) => {
@@ -27,6 +27,10 @@ class Folder extends PureComponent {
     );
   }
 }
+
+Folder.propTypes = {
+  item: PropTypes.object,
+};
 
 const mapDispatchToProps = {
   deleteFolderRequest,

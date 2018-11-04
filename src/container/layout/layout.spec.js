@@ -26,7 +26,7 @@ describe('Layout container', () => {
           },
         ],
       },
-      currentPath: '',
+      currentPath: [],
       location: '/',
     fetchInfoDiskRequest: mockFetchInfo,
     fetchResourcesRequest: mockFetchResources,

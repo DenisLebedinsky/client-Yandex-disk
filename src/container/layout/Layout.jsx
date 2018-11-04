@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getToken, getData, getPath } from './../../selectors/selectors';
+import PropTypes from 'prop-types';
 
 import ListItem from './../../components/ListItem/ListItem';
 import {
@@ -44,6 +45,12 @@ export class Layout extends Component {
     </div>;
   }
 }
+
+Layout.propTypes = {
+  token: PropTypes.string,
+  data: PropTypes.object,
+  currentPath: PropTypes.array,
+};
 
 //добавляем данные из стора в пропсы
 const mapStateToProps = state => {

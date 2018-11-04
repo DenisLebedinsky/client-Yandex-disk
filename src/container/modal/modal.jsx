@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './style.css';
 import { closeModal, createFolderRequest } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Modal extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export class Modal extends Component {
               <h5 className='modal-title'>Наименование папки</h5>
               <button type='button'
                       className='close'
-                      onClick={()=>this.close()}
+                      onClick={() => this.close()}
               >
                 <span>&times;</span>
               </button>
@@ -50,20 +51,20 @@ export class Modal extends Component {
               <input type='text'
                      className='form-control'
                      value={this.state.enterText}
-                     onChange={(e)=>this.handleChange(e)}
+                     onChange={(e) => this.handleChange(e)}
               />
             </div>
             <div className='modal-footer'>
               <button type='button'
                       id='closeModal'
                       className='btn btn-secondary'
-                      onClick={()=>this.close()}
+                      onClick={() => this.close()}
               >Закрыть
               </button>
               <button type='button'
                       className='btn btn-primary'
                       id='CreateFolder'
-                      onClick={()=>this.createFolder()}
+                      onClick={() => this.createFolder()}
               >Создать
               </button>
             </div>
@@ -73,6 +74,11 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  modal: PropTypes.object,
+  location: PropTypes.string,
+};
 
 const mapStateToProps = (state) => {
   return ({ modal: state.modal });

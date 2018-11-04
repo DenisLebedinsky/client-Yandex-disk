@@ -19,7 +19,6 @@ describe('Modal testing', () => {
     const ModalContainer = shallow(<Modal  {...props} />);
 
     it('snapshot', () => {
-      //  console.log(ModalContainer.debug());
       expect(ModalContainer).toMatchSnapshot();
     });
 
@@ -35,13 +34,11 @@ describe('Modal testing', () => {
       const ModalContainer = shallow(<Modal  {...nextProps} />);
 
       it('snapshot', () => {
-        //console.log(ModalContainer.debug());
         expect(ModalContainer).toMatchSnapshot();
       });
 
       //проверяем вызов функции mockcreateFolderRequest
       it('function create folder', () => {
-        //console.log(ModalContainer.find('#CreateFolder').debug());
         ModalContainer.setState({ enterText: 'newfolder' });
         ModalContainer.find('#CreateFolder').simulate('click');
         expect(mockCreateFolderRequest).toHaveBeenCalledTimes(1);

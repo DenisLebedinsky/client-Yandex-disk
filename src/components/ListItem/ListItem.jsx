@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getPath } from '../../selectors/selectors';
-import {file} from './file'
+import { file } from './file';
 import Folder from './Folder';
-
+import PropTypes from 'prop-types';
 
 export class ListItem extends PureComponent {
   //при нажатии на папку так же изменяем путь адреса
@@ -19,17 +19,22 @@ export class ListItem extends PureComponent {
     }
   }
 
-render(){
-  const {item} = this.props;
-  return(
-    <li className='list-group-item  '
-        onClick={() => this.handleClickFolder(item.type, item.name)}
-    >
-      {item.type === 'dir' ? <Folder item={item} location={this.props.history.location}/> : file(item)}
-    </li>
-  )
+  render() {
+    const { item } = this.props;
+    return (
+      <li className='list-group-item  '
+          onClick={() => this.handleClickFolder(item.type, item.name)}
+      >
+        {item.type === 'dir' ? <Folder item={item} location={this.props.history.location}/> : file(item)}
+      </li>
+    );
+  }
 }
-}
+
+ListItem.propTypes = {
+  item: PropTypes.object,
+  currentPath: PropTypes.array,
+};
 
 //добавляем данные из стора в пропсы
 const mapStateToProps = state => {
@@ -38,4 +43,4 @@ const mapStateToProps = state => {
   });
 };
 
-export default withRouter(connect(mapStateToProps, null)(ListItem))
+export default withRouter(connect(mapStateToProps, null)(ListItem));
