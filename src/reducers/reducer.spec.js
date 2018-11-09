@@ -1,6 +1,6 @@
 import dataFn from './data';
 import * as t from './../ActionType';
-
+// файлы для тестов лучше называть *.test.js
 describe('test reducer data', () => {
 
   it('fetch resoure request', () => {

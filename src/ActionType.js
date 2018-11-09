@@ -1,3 +1,5 @@
+// что этот файл здесь делает в корневой директории?
+
 export const FETCH_INFO_DISK_REQUEST = 'FETCH_INFO_DISK_REQUEST';
 export const FETCH_INFO_DISK_SUCCES = 'FETCH_INFO_DISK_SUCCES';
 export const FETCH_INFO_DISK_FAILED = 'FETCH_INFO_DISK_FAILED';

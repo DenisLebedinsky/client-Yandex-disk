@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getMSG } from '../../selectors/selectors';
 import PropTypes from 'prop-types';
 
+// другие файлы ты называешь по имени класса, а этот файл решил назвать index.js, не надо так, всё надо делать в одном стиле
 export class MSG extends Component {
 
   render() {

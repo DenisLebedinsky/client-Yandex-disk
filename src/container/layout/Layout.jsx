@@ -30,15 +30,18 @@ export class Layout extends Component {
   }
 
   render() {
+    // когда у тебя много пропсов, надо их все объявлять перед return через деструктирующее присваивание
+    // у тебя везде используется data.item, почему бы сразу его и не передать в пропсах, это и с оптимизации и с тестирования лучше
+    const { data, currentPath } = this.props;
     return <div className='container'>
       <header className='App-header bd-highlight'>
-        {this.props.data.items &&
+        {data.items &&
         <ul className='list-group list-resourse'>
-          {this.props.currentPath.length > 1 &&
+          {currentPath.length > 1 &&
           <li className='list-group-item  d-flex justify-content-between'
-              onClick={() => this.handleCkickBack()}
+              onClick={() => this.handleCkickBack() /** бесполезная лямбда функция, надо было просто this.handl... */}
           >...</li>}
-          {this.props.data.items.map(item => <ListItem item={item} key={item.resource_id}/>)}
+          {data.items.map(item => <ListItem item={item} key={item.resource_id}/>)}
         </ul>
         }
       </header>
