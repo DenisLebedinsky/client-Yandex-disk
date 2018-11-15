@@ -1,4 +1,4 @@
-import {SAVE_TOKEN,CLEAR_TOKEN} from './../ActionType';
+import {SAVE_TOKEN,CLEAR_TOKEN} from '../actions/ActionType';
 
 const initialState = '' || localStorage.getItem('token');
 

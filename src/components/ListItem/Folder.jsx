@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import icFolder from './ic_folder.svg';
-import { deleteFolderRequest } from '../../actions';
+import { deleteFolderRequest } from '../../actions/action';
 import PropTypes from 'prop-types';
 
 class Folder extends PureComponent {

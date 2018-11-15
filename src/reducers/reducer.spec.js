@@ -1,5 +1,5 @@
 import dataFn from './data';
-import * as t from './../ActionType';
+import * as t from '../actions/ActionType';
 
 describe('test reducer data', () => {
 

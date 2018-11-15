@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MSG } from './index';
+import { MSG } from './Msg';
 
 const props = {
   msg: {

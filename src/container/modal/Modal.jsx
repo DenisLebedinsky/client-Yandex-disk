@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './style.css';
-import { closeModal, createFolderRequest } from '../../actions';
+import { closeModal, createFolderRequest } from '../../actions/action';
 import PropTypes from 'prop-types';
 
 export class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = { enterText: '' };
+    this.close = this.close.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.createFolder = this.createFolder.bind(this);
   }
 
   handleChange(e) {
     this.setState({ enterText: e.target.value.replace(/[^a-zА-яёЁ\d\s]+/ig, '') });
   }
 
-  close() {
+  close(){
     this.props.closeModal();
-  }
+  };
 
   createFolder() {
     if (this.state.enterText) {
@@ -42,7 +45,7 @@ export class Modal extends Component {
               <h5 className='modal-title'>Наименование папки</h5>
               <button type='button'
                       className='close'
-                      onClick={() => this.close()}
+                      onClick={this.close}
               >
                 <span>&times;</span>
               </button>
@@ -51,20 +54,20 @@ export class Modal extends Component {
               <input type='text'
                      className='form-control'
                      value={this.state.enterText}
-                     onChange={(e) => this.handleChange(e)}
+                     onChange={this.handleChange}
               />
             </div>
             <div className='modal-footer'>
               <button type='button'
                       id='closeModal'
                       className='btn btn-secondary'
-                      onClick={() => this.close()}
+                      onClick={this.close}
               >Закрыть
               </button>
               <button type='button'
                       className='btn btn-primary'
                       id='CreateFolder'
-                      onClick={() => this.createFolder()}
+                      onClick={this.createFolder}
               >Создать
               </button>
             </div>

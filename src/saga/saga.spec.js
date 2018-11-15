@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
 import * as Api from './../api/api';
 import * as sags from './saga';
-import * as t from '../ActionType';
+import * as t from '../actions/ActionType';
 
 describe('redux saga', () => {
   const gen = sags.default();

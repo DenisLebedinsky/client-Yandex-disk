@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest, all } from 'redux-saga/effects';
 import * as Api from './../api/api';
-import * as Types from './../ActionType';
-import * as actions from './../actions';
+import * as Types from '../actions/ActionType';
+import * as actions from './../actions/action';
 import { getToken } from '../selectors/selectors';
 
 export function* fetchDisk(action) {
@@ -12,7 +12,10 @@ export function* fetchDisk(action) {
       yield put(actions.saveToken(token));
       localStorage.setItem('token', token);
     }
-    const info = yield call(Api.getDiskInfofoApi, token);
+    const info = yield call(
+      Api.getDiskInfofoApi,
+      token,
+    );
     yield put(actions.fetchInfoDiskSucces(info));
   } catch (e) {
     yield put(actions.fetchInfoDiskFailed(e));
@@ -24,21 +27,36 @@ export function* fetchResources(action) {
   //и его содержимое
   try {
     const token = yield select(getToken);
-    const res = yield call(Api.getResourcesApi, token, action.payload);
+    const res = yield call(
+      Api.getResourcesApi,
+      token,
+      action.payload,
+    );
     yield put(actions.fetchResourcesSucces(res));
   } catch (e) {
     yield put(actions.fetchResourcesFailed(e));
   }
 }
 
- export function* delFolder(action) {
+export function* delFolder(action) {
 
   try {
     const token = yield select(getToken);
-    const status = yield call(Api.delFolderApi, token, action.payload.pathFolder);
+    const status = yield call(
+      Api.delFolderApi,
+      token, action.payload.pathFolder,
+    );
     if (status === 204) {
-      yield put(actions.deleteFolderSucces('Папка "' + action.payload.pathFolder.replace('/', '') + '" удалена'));
-      const res = yield call(Api.getResourcesApi, token, action.payload.currentPath);
+      yield put(
+        actions.deleteFolderSucces(
+          'Папка "' + action.payload.pathFolder.replace('/', '') + '" удалена',
+        ),
+      );
+      const res = yield call(
+        Api.getResourcesApi,
+        token,
+        action.payload.currentPath,
+      );
       yield put(actions.fetchResourcesSucces(res));
     }
   } catch (e) {
@@ -50,10 +68,21 @@ export function* createFolder(action) {
   //создадим папку
   try {
     const token = yield select(getToken);
-    const status = yield call(Api.createFolderApi, token, action.payload.pathFolder);
+    const status = yield call(
+      Api.createFolderApi,
+      token,
+      action.payload.pathFolder,
+    );
     if (status === 201) {
-      yield put(actions.createFolderSucces('Создана папка "' + action.payload.pathFolder.replace('/', '') + '"'));
-      const res = yield call(Api.getResourcesApi, token, action.payload.currentPath);
+      yield put(actions.createFolderSucces(
+        'Создана папка "' + action.payload.pathFolder.replace('/', '') + '"',
+        ),
+      );
+      const res = yield call(
+        Api.getResourcesApi,
+        token,
+        action.payload.currentPath,
+      );
       yield put(actions.fetchResourcesSucces(res));
     }
   } catch (e) {
@@ -63,15 +92,27 @@ export function* createFolder(action) {
 
 export function* uploadFile(action) {
   try {
-    const path = (action.payload.pathname === '/') ?
-      action.payload.pathname + action.payload.filename :
-      action.payload.pathname + '/' + action.payload.filename;
+    const path =
+      action.payload.pathname === '/'
+        ? action.payload.pathname + action.payload.filename
+        : action.payload.pathname + '/' + action.payload.filename;
     const token = yield select(getToken);
-    const result = yield call(Api.uploadFileGetUrlApi, token, path);
-    const status = yield call(Api.uploadFileApi, result.data.href, action.payload.file);
+    const result = yield call(
+      Api.uploadFileGetUrlApi,
+      token,
+      path);
+    const status = yield call(
+      Api.uploadFileApi,
+      result.data.href,
+      action.payload.file,
+    );
     if (status === 201) {
       yield put(actions.uploadFileSucces());
-      const res = yield call(Api.getResourcesApi, token, action.payload.pathname);
+      const res = yield call(
+        Api.getResourcesApi,
+        token,
+        action.payload.pathname,
+      );
       yield put(actions.fetchResourcesSucces(res));
     }
   } catch (e) {

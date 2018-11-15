@@ -1,48 +1,62 @@
 import axios from 'axios';
 
+const UrlInfo = 'https://cloud-api.yandex.net/v1/disk?fields=%2F';
+const UrlRes = 'https://cloud-api.yandex.net:443/v1/disk/resources?';
 export const getDiskInfofoApi = (token) => {
-  const Url = 'https://cloud-api.yandex.net/v1/disk?fields=%2F';
-
-  return axios.get(Url, {
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': token,
-    },
-  }).then(res => res.data)
+  return axios
+    .get(UrlInfo, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: token,
+      },
+    })
+    .then(res => res.data)
     .catch(error => {
       throw error;
     });
 };
 
 export const getResourcesApi = (token, path) => {
-  const Url = 'https://cloud-api.yandex.net:443/v1/disk/resources?';
-  let pathfull = 'path=%2F';
+
+  let pathfull = '/';
   if (path !== '') {
-    pathfull = 'path=' + encodeURIComponent(path);
+    pathfull = path;
   }
-  return axios.get(Url + pathfull, {
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': token,
-    },
-  }).then(res => res.data)
+
+  return axios
+    .get(UrlRes, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: token,
+      },
+      params: {
+        path: pathfull,
+      },
+    })
+    .then(res => res.data)
     .catch(error => {
       throw error;
     });
 };
 
 export const delFolderApi = (token, path) => {
-  const Url = 'https://cloud-api.yandex.net:443/v1/disk/resources?';
-  let pathfull = 'path=%2F';
+
+  let pathfull = '/';
   if (path !== '') {
-    pathfull = 'path=' + encodeURIComponent(path);
+    pathfull = path;
   }
-  return axios.delete(Url + pathfull, {
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': token,
-    },
-  }).then(res => res.status)
+
+  return axios
+    .delete(UrlRes, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: token,
+      },
+      params: {
+        path: pathfull,
+      },
+    })
+    .then(res => res.status)
     .catch(error => {
       throw error;
     });
@@ -70,16 +84,19 @@ export const createFolderApi = (token, path) => {
 //первый запрос для загрузки файла, вернет ссылку по которой нужно отправить файл
 //ссылка действует 30мин.
 export const uploadFileGetUrlApi = (token, path) => {
+  let pathfull = path;
   const Url = 'https://cloud-api.yandex.net:443/v1/disk/resources/upload?';
-  let pathfull = 'path=' + encodeURIComponent(path);
   const instance = axios.create({
-    'Accept': 'application/json',
-    'Authorization': token,
-
+    Accept: 'application/json',
+    Authorization: token,
   });
   instance.defaults.headers.common['Authorization'] = token;
 
-  return instance.get(Url + pathfull)
+  return instance.get(Url, {
+    params: {
+      path: pathfull,
+    },
+  })
     .then(res => res)
     .catch(error => {
       throw error;
@@ -97,7 +114,8 @@ export const uploadFileApi = (url, file) => {
 
   delete axios.defaults.headers.common['Authorization'];
   axios.defaults.headers.common['Content-Type'] = 'application/octet-stream';
-  return axios.put(url, blobfile)
+  return axios
+    .put(url, blobfile)
     .then(res => res.status)
     .catch(error => {
       throw error;

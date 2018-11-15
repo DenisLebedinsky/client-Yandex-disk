@@ -1,5 +1,5 @@
 import * as actions from './index';
-import * as t from '../ActionType';
+import * as t from './ActionType';
 
 
 describe('test actions', () => {

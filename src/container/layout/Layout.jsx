@@ -7,7 +7,7 @@ import ListItem from './../../components/ListItem/ListItem';
 import {
   fetchInfoDiskRequest,
   fetchResourcesRequest,
-} from '../../actions';
+} from '../../actions/action';
 
 export class Layout extends Component {
   /* после монирования производим экшен который запустит запрос к api
@@ -22,7 +22,7 @@ export class Layout extends Component {
   }
 
   // при нажатии ... (на каталог выше) меняем адресс роута
-  handleCkickBack() {
+  handleCklickBack() {
     let newpathback = this.props.history.location.pathname.substr(1).split('/');
     newpathback.pop();
     let newStrPath = '/' + newpathback.join('/');
@@ -30,15 +30,16 @@ export class Layout extends Component {
   }
 
   render() {
+    const { data, currentPath } = this.props;
     return <div className='container'>
       <header className='App-header bd-highlight'>
-        {this.props.data.items &&
+        {data.items &&
         <ul className='list-group list-resourse'>
-          {this.props.currentPath.length > 1 &&
+          {currentPath.length > 1 &&
           <li className='list-group-item  d-flex justify-content-between'
-              onClick={() => this.handleCkickBack()}
+              onClick={() => this.handleCklickBack()}
           >...</li>}
-          {this.props.data.items.map(item => <ListItem item={item} key={item.resource_id}/>)}
+          {data.items.map(item => <ListItem item={item} key={item.resource_id}/>)}
         </ul>
         }
       </header>
