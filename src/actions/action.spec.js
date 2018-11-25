@@ -1,4 +1,5 @@
-import * as actions from './index';
+// TODO: [🐱👀] Тест падает на этой строчке: в каталоге нет файла index.js -)
+import * as actions from './action';
 import * as t from './ActionType';
 
 

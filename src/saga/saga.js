@@ -46,6 +46,7 @@ export function* delFolder(action) {
       Api.delFolderApi,
       token, action.payload.pathFolder,
     );
+    // TODO: [🐱👀] Здесь и далее: нет обработки кодов ошибок.
     if (status === 204) {
       yield put(
         actions.deleteFolderSucces(
