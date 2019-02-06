@@ -36,6 +36,8 @@ npm test
 
 ## Build
 
+// TODO: [🐱👀] Команда должна быть `npm run build`   
+
 ```
 npm build
 ```

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// TODO: [🐱👀] Эндпоинты внешних сервисов принято выносить в переменные среды
 const UrlInfo = 'https://cloud-api.yandex.net/v1/disk?fields=%2F';
 const UrlRes = 'https://cloud-api.yandex.net:443/v1/disk/resources?';
 export const getDiskInfofoApi = (token) => {
